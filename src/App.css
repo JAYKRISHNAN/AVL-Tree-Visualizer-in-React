@@ -1,7 +1,23 @@
-.app {
-  text-align: center;
-  margin: 50px;
+#app {
   border: 1px solid black;
+  margin: 40px 60px;
+}
+
+#tree {
+  display: inline-block;
+  width: 1000px;
+  padding: 10px;
+}
+
+#actions {
+  padding: 10px;
+  border: 1px solid black;
+  display: inline-block;
+  width: 300px
+}
+
+.action {
+  display: block;
 }
 
 .app-link {

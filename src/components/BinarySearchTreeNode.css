@@ -4,4 +4,9 @@
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+  padding: 4px 12px;
+}
+
+.node-wrapper {
+  display: inline-block;
 }

@@ -13,12 +13,19 @@ class BinarySearchTree {
     else {
       this.insertNode(this.root, newNode);
     }
+
+    // Move up to the root and check balance factors along the way.
+    let currentNode = this.find(this.root, value);
+    while (currentNode) {
+      this.balance(currentNode);
+      currentNode = currentNode.parent;
+    }
   }
 
   insertNode(node, newNode) {
     if (newNode.value < node.value) {
       if (node.left === null){
-        node.left = newNode;
+        node.setLeft(newNode);
       }
       else {
         this.insertNode(node.left, newNode);
@@ -26,7 +33,7 @@ class BinarySearchTree {
     }
     else if (newNode.value > node.value) {
       if (node.right === null){
-        node.right = newNode;
+        node.setRight(newNode);
       }
       else {
         this.insertNode(node.right, newNode);
@@ -36,6 +43,10 @@ class BinarySearchTree {
 
   delete(value) {
     this.root = this.deleteNode(this.root, value);
+
+    if(this.root){
+      this.balance(this.root);
+    }
   }
 
   deleteNode(node, value) {
@@ -43,10 +54,10 @@ class BinarySearchTree {
       return null;
     }
     else if (value < node.value) {
-      node.left = this.deleteNode(node.left, value);
+      node.setLeft(this.deleteNode(node.left, value));
       return node;
     } else if (value > node.value) {
-      node.right = this.deleteNode(node.right, value);
+      node.setRight(this.deleteNode(node.right, value));
       return node;
     } else {
         if (node.left === null && node.right === null) { //node to be deleted is the leaf node
@@ -67,7 +78,7 @@ class BinarySearchTree {
           let temp = this.findSmallestNode(node.right);
           node.value = temp.value;
 
-          node.right = this.deleteNode(node.right, temp.value);
+          node.setRight(this.deleteNode(node.right, temp.value));
           return node;
         }
     }
@@ -82,26 +93,108 @@ class BinarySearchTree {
     }
   }
 
-  traverseInorder(node, fn) {
-    if (node !== null) {
-      this.traverseInorder(node.left, fn);
-      fn(node);
-      this.traverseInorder(node.right, fn);
+  balance(node) {
+    if (node.balanceFactor > 1) {
+      if (node.left.balanceFactor > 0) {
+        this.rotateLeftLeft(node);
+      } else if (node.left.balanceFactor < 0) {
+        this.rotateLeftRight(node);
+      }
+    } else if (node.balanceFactor < -1) {
+      if (node.right.balanceFactor < 0) {
+        this.rotateRightRight(node);
+      } else if (node.right.balanceFactor > 0) {
+        this.rotateRightLeft(node);
+      }
     }
   }
 
-  traversePreorder(node, fn) {
+  rotateLeftLeft(rootNode) {
+    const leftNode = rootNode.left;
+    rootNode.setLeft(null);
+    if (rootNode.parent) {
+      rootNode.parent.setLeft(leftNode);
+    } else if (rootNode === this.root) {
+      this.root = leftNode;
+    }
+    if (leftNode.right) {
+      rootNode.setLeft(leftNode.right);
+    }
+    leftNode.setRight(rootNode);
+  }
+
+  rotateLeftRight(rootNode) {
+    const leftNode = rootNode.left;
+    rootNode.setLeft(null);
+
+    const leftRightNode = leftNode.right;
+    leftNode.setRight(null);
+
+    if (leftRightNode.left) {
+      leftNode.setRight(leftRightNode.left);
+      leftRightNode.setLeft(null);
+    }
+
+    rootNode.setLeft(leftRightNode);
+    leftRightNode.setLeft(leftNode);
+
+    this.rotateLeftLeft(rootNode);
+  }
+
+  rotateRightLeft(rootNode) {
+    const rightNode = rootNode.right;
+    rootNode.setRight(null);
+
+    const rightLeftNode = rightNode.left;
+    rightNode.setLeft(null);
+
+    if (rightLeftNode.right) {
+      rightNode.setLeft(rightLeftNode.right);
+      rightLeftNode.setRight(null);
+    }
+
+    rootNode.setRight(rightLeftNode);
+    rightLeftNode.setRight(rightNode);
+    this.rotateRightRight(rootNode);
+  }
+
+  rotateRightRight(rootNode) {
+    const rightNode = rootNode.right;
+    rootNode.setRight(null);
+
+    if (rootNode.parent) {
+      rootNode.parent.setRight(rightNode);
+    } else if (rootNode === this.root) {
+      this.root = rightNode;
+    }
+
+    if (rightNode.left) {
+      rootNode.setRight(rightNode.left);
+    }
+
+    rightNode.setLeft(rootNode);
+  }
+
+  traverseInOrder(node, fn) {
     if (node !== null) {
+      this.traverseInOrder(node.left, fn);
       fn(node);
-      this.traversePreorder(node.left, fn);
-      this.traversePreorder(node.right, fn);
+      this.traverseInOrder(node.right, fn);
     }
   }
 
-  traversePostorder(node, fn) {
+  traversePreOrder(node, fn) {
     if (node !== null) {
-      this.traversePostorder(node.left, fn);
-      this.traversePostorder(node.right, fn);
+      fn(node);
+      this.traversePreOrder(node.left, fn);
+      this.traversePreOrder(node.right, fn);
+    }
+  }
+
+  traversePostOrder(node, fn) {
+    if (node !== null) {
+      this.traversePostOrder(node.left, fn);
+      this.traversePostOrder(node.right, fn);
       fn(node);
     }
   }
