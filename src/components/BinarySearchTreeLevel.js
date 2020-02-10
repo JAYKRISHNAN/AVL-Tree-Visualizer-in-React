@@ -5,10 +5,10 @@ import BinarySearchTreeNode from "./BinarySearchTreeNode";
 const BinarySearchTreeLevel = props => {
   return (
     <div>
-      {props.values &&
-        props.values.map((node, key) => (
+      {props.nodesInLevel &&
+        props.nodesInLevel.map((node, index) => (
           <BinarySearchTreeNode
-            key={`${props.level}_${key}`}
+            key={`${props.level}_${index}`}
             value={node.value}
             level={props.level}
           />

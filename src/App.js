@@ -27,13 +27,13 @@ import BinarySearchTree from "./classes/BinarySearchTree";
 
   onChangeInsertValue(event) {
     this.setState({
-      insertValue: event.target.value
+      insertValue: parseInt(event.target.value)
     });
   }
 
   onChangeDeleteValue(event) {
     this.setState({
-      deleteValue: event.target.value
+      deleteValue: parseInt(event.target.value)
     });
   }
 
@@ -82,11 +82,11 @@ import BinarySearchTree from "./classes/BinarySearchTree";
       <div id="app">
         <div id="tree">
           { hasRootNode ? (
-              values.map((values, level) => (
+              values.map((nodes, index) => (
                 <BinarySearchTreeLevel
-                  key={level}
-                  level={level + 1}
-                  values={values}
+                  key={index}
+                  level={index + 1}
+                  nodesInLevel={nodes}
                 />
               ))
             ) : (
@@ -96,12 +96,12 @@ import BinarySearchTree from "./classes/BinarySearchTree";
         </div>
         <div id="actions">
           <div className="action">
-            <input value={this.state.insertValue} onChange={this.onChangeInsertValue}/>
+            <input value={this.state.insertValue} onChange={this.onChangeInsertValue} type="number"/>
             <button  onClick={this.insert} className="btn btn-default">Insert</button>
           </div>
 
           <div className="action">
-            <input value={this.state.deleteValue} onChange={this.onChangeDeleteValue}/>
+            <input value={this.state.deleteValue} onChange={this.onChangeDeleteValue} type="number"/>
             <button onClick={this.delete} className="btn btn-default">Delete</button>
           </div>
 
