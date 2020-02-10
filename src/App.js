@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BinarySearchTreeNode from './components/BinaySearchTreeNode.js'
+import BinarySearchTreeLevel from './components/BinarySearchTreeLevel.js'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BinarySearchTree from "./classes/BinarySearchTree";
@@ -77,11 +77,18 @@ import BinarySearchTree from "./classes/BinarySearchTree";
 
   render(){
     const hasRootNode = this.state.tree.root;
+    const values = this.state.tree.levelOrder();
     return (
       <div id="app">
         <div id="tree">
           { hasRootNode ? (
-              <BinarySearchTreeNode node={this.state.tree.root}/>
+              values.map((values, level) => (
+                <BinarySearchTreeLevel
+                  key={level}
+                  level={level + 1}
+                  values={values}
+                />
+              ))
             ) : (
               <h3> No elements in the tree. Click insert to start! </h3>
             )

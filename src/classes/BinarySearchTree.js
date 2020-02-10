@@ -215,17 +215,42 @@ class BinarySearchTree {
   }
 
   breadthFirstSearch(node, fn) {
-      const queue = [node];
-      while(queue.length > 0){
-        const currentNode = queue.shift();
-        fn(currentNode);
-        if (currentNode.left){
-          queue.push(currentNode.left);
-        }
-        if(currentNode.right){
-          queue.push(currentNode.right);
-        }
+    const queue = [node];
+    while(queue.length > 0){
+      const currentNode = queue.shift();
+      fn(currentNode);
+      if (currentNode.left){
+        queue.push(currentNode.left);
       }
+      if(currentNode.right){
+        queue.push(currentNode.right);
+      }
+    }
+  }
+
+  levelOrder() {
+    if (!this.root) return [];
+    let array = [];
+    search(this.root, 1, 1);
+
+    function search(node, level, index) {
+      if (node) {
+        const count = Math.pow(2, level - 1);
+        if (array.length < level) {
+          array.push(Array(count).fill(""));
+        }
+        var arr = array[level - 1];
+        arr[index - 1] = node;
+        const leftIndex = 2 * index - 1;
+        const rightIndex = 2 * index;
+        search(node.left, level + 1, leftIndex);
+        search(node.right, level + 1, rightIndex);
+      } else {
+        return;
+      }
+    }
+
+    return array;
   }
 }
 
