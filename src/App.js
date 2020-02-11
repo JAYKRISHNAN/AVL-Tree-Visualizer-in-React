@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import BinarySearchTreeLevel from './components/BinarySearchTreeLevel.js'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BinarySearchTree from "./classes/BinarySearchTree";
+import BinarySearchTree from "./classes/BinarySearchTree.js";
+import BinarySearchTreeNode from "./components/BinarySearchTreeNode.js";
 
  class App extends Component {
 
@@ -11,6 +11,7 @@ import BinarySearchTree from "./classes/BinarySearchTree";
     this.state = {
       insertValue: "",
       deleteValue: "",
+      searchValue: "",
       tree: new BinarySearchTree(),
     };
     this.insert = this.insert.bind(this);
@@ -20,8 +21,10 @@ import BinarySearchTree from "./classes/BinarySearchTree";
     this.traverseInOrder = this.traverseInOrder.bind(this);
     this.traversePostOrder = this.traversePostOrder.bind(this);
     this.breadthFirstSearch = this.breadthFirstSearch.bind(this);
+    this.search = this.search.bind(this);
 
     this.onChangeInsertValue = this.onChangeInsertValue.bind(this);
+    this.onChangeSearchValue = this.onChangeSearchValue.bind(this);
     this.onChangeDeleteValue = this.onChangeDeleteValue.bind(this);
   }
 
@@ -37,6 +40,12 @@ import BinarySearchTree from "./classes/BinarySearchTree";
     });
   }
 
+  onChangeSearchValue(event) {
+    this.setState({
+      searchValue: parseInt(event.target.value)
+    });
+  }
+
   insert() {
     this.state.tree.insert(this.state.insertValue);
     this.setState({
@@ -49,6 +58,16 @@ import BinarySearchTree from "./classes/BinarySearchTree";
     this.setState({
       deleteValue: ""
     });
+  }
+
+  search(){
+    let searchResult = this.state.tree.find(this.state.tree.root, this.state.searchValue);
+    if(searchResult){
+      alert(searchResult.value);
+    }
+    else{
+      alert("Not found");
+    }
   }
 
   traversePreOrder(){
@@ -77,20 +96,13 @@ import BinarySearchTree from "./classes/BinarySearchTree";
 
   render(){
     const hasRootNode = this.state.tree.root;
-    const values = this.state.tree.levelOrder();
     return (
       <div id="app">
-        <div id="tree">
+        <div id="tree" className="tree">
           { hasRootNode ? (
-              values.map((nodes, index) => (
-                <BinarySearchTreeLevel
-                  key={index}
-                  level={index + 1}
-                  nodesInLevel={nodes}
-                />
-              ))
+              <ul><BinarySearchTreeNode node={this.state.tree.root} /></ul>
             ) : (
-              <h3> No elements in the tree. Click insert to start! </h3>
+              <h4> No elements in the tree. Click insert to start! </h4>
             )
           }
         </div>
@@ -106,8 +118,8 @@ import BinarySearchTree from "./classes/BinarySearchTree";
           </div>
 
           <div className="action">
-            <input/>
-            <button className="btn btn-default">Search</button>
+            <input value={this.state.searchValue} onChange={this.onChangeSearchValue} type="number"/>
+            <button onClick={this.search} className="btn btn-default">Search</button>
           </div>
 
           <div className="action">

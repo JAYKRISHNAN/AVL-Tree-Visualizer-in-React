@@ -94,16 +94,16 @@ class BinarySearchTree {
   }
 
   balance(node) {
-    if (node.balanceFactor > 1) {
-      if (node.left.balanceFactor > 0) {
+    if (node.balanceFactor() > 1) {
+      if (node.left.balanceFactor() > 0) {
         this.rotateLeftLeft(node);
       } else if (node.left.balanceFactor < 0) {
         this.rotateLeftRight(node);
       }
-    } else if (node.balanceFactor < -1) {
-      if (node.right.balanceFactor < 0) {
+    } else if (node.balanceFactor() < -1) {
+      if (node.right.balanceFactor() < 0) {
         this.rotateRightRight(node);
-      } else if (node.right.balanceFactor > 0) {
+      } else if (node.right.balanceFactor() > 0) {
         this.rotateRightLeft(node);
       }
     }
