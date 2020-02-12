@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/AVL-Tree-Visualizer-in-React/static/css/main.c853c5ed.chunk.css",
+    "main.js": "/AVL-Tree-Visualizer-in-React/static/js/main.2e93a01a.chunk.js",
+    "main.js.map": "/AVL-Tree-Visualizer-in-React/static/js/main.2e93a01a.chunk.js.map",
+    "runtime-main.js": "/AVL-Tree-Visualizer-in-React/static/js/runtime-main.c9c51f11.js",
+    "runtime-main.js.map": "/AVL-Tree-Visualizer-in-React/static/js/runtime-main.c9c51f11.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/AVL-Tree-Visualizer-in-React/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.418e3a07.chunk.js": "/AVL-Tree-Visualizer-in-React/static/js/2.418e3a07.chunk.js",
+    "static/js/2.418e3a07.chunk.js.map": "/AVL-Tree-Visualizer-in-React/static/js/2.418e3a07.chunk.js.map",
+    "index.html": "/AVL-Tree-Visualizer-in-React/index.html",
+    "precache-manifest.7b8a34cb9498296ef8c64f064c7e9efa.js": "/AVL-Tree-Visualizer-in-React/precache-manifest.7b8a34cb9498296ef8c64f064c7e9efa.js",
+    "service-worker.js": "/AVL-Tree-Visualizer-in-React/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/AVL-Tree-Visualizer-in-React/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.c853c5ed.chunk.css.map": "/AVL-Tree-Visualizer-in-React/static/css/main.c853c5ed.chunk.css.map",
+    "static/js/2.418e3a07.chunk.js.LICENSE": "/AVL-Tree-Visualizer-in-React/static/js/2.418e3a07.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c9c51f11.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.418e3a07.chunk.js",
+    "static/css/main.c853c5ed.chunk.css",
+    "static/js/main.2e93a01a.chunk.js"
+  ]
+}
