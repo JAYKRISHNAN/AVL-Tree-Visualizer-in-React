@@ -4,6 +4,7 @@ class BinarySearchTreeNode {
       this.left = null;
       this.right = null;
       this.parent = null;
+      this.active = false;
     }
 
     leftHeight() {

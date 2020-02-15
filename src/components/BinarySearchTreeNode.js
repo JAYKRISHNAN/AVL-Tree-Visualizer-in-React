@@ -6,7 +6,7 @@ class BinarySearchTreeNode extends Component {
     return (
       <React.Fragment>
         <li>
-          <a href="#" className={this.props.nodeType}>{this.props.node.value}</a>
+          <a href="#" className={this.props.nodeType + (this.props.node.active == true ? " active" : "")}>{this.props.node.value}</a>
           { (this.props.node.left || this.props.node.right) &&
             <ul>
               { this.props.node.left &&

@@ -100,7 +100,7 @@ import BinarySearchTreeNode from "./components/BinarySearchTreeNode.js";
       <div id="app">
         <div id="tree" className="tree">
           { hasRootNode ? (
-              <ul><BinarySearchTreeNode node={this.state.tree.root} /></ul>
+              <ul><BinarySearchTreeNode node={this.state.tree.root} nodeType="root" /></ul>
             ) : (
               <h4> No elements in the tree. Click insert to start! </h4>
             )
