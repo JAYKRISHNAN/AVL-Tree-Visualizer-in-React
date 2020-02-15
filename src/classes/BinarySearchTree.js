@@ -1,5 +1,9 @@
 import BinarySearchTreeNode from "./BinarySearchTreeNode";
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from '../App.js';
+
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -251,6 +255,11 @@ class BinarySearchTree {
     }
 
     return array;
+  }
+
+  pause(milliseconds) {
+    var date = new Date();
+    while ((new Date()) - date <= milliseconds) { /* Do nothing */ }
   }
 }
 
