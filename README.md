@@ -21,6 +21,10 @@ The tool also supports 3 types of DFS traversal
 
 The tool also supports BFS traversal of the tree
 
+## To Do
+
+- Add animation visualisations for showing the traversals, insertion, deletion and rotations
+
 ### References
 
 - https://en.wikipedia.org/wiki/Binary_search_tree
