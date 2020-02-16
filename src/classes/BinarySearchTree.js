@@ -1,9 +1,4 @@
 import BinarySearchTreeNode from "./BinarySearchTreeNode";
-
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../App.js';
-
 class BinarySearchTree {
   constructor() {
     this.root = null;
