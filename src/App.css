@@ -1,7 +1,7 @@
 #app {
   border: 1px solid black;
   margin: 40px 60px 0 60px;
-  height: 600px;
+  height: 550px;
 }
 
 #tree {
@@ -11,38 +11,47 @@
   padding: 10px;
 }
 
-.basic-actions {
+#basic-actions {
   padding: 80px 10px;
   display: inline-block;
   width: 300px;
 }
 
-.basic-actions .action {
+#basic-actions .action {
   display: block;
   margin: 20px;
 }
 
-.basic-actions .action button {
+#basic-actions .action button {
 	width: 80px;
 }
 
-.basic-actions .action input {
+#basic-actions .action input {
 	width: 74px;
 	margin-right: 20px;
 }
 
-.traversal-actions {
+#traversal-actions {
   border: 1px solid black;
-  display: block;
   margin: 0 60px 40px 60px;
   padding: 20px;
 }
 
-.traversal-actions .action {
-  display: inline-block;
-  margin: 0 20px;
-  width: 180px;
+#traversal-preview {
+  border: 1px solid black;
+  margin: 30px 60px 0 60px;
+  padding: 20px;
+  text-align: center;
 }
+
+#traversal-actions .action {
+  display: inline-block;
+  margin: 0 50px;
+}
+
+#traversal-actions .action input{
+	margin-right: 15px;
+  }
 
 .app-link {
   color: #61dafb;

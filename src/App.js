@@ -11,10 +11,13 @@ class App extends Component {
       insertValue: "",
       deleteValue: "",
       searchValue: "",
+      previewContent: "",
       tree: new BinarySearchTree()
     };
     this.insert = this.insert.bind(this);
     this.delete = this.delete.bind(this);
+    this.resetActiveStatusOfNodes = this.resetActiveStatusOfNodes.bind(this);
+    this.resetPreviewContent = this.resetPreviewContent.bind(this);
 
     this.traversePreOrder = this.traversePreOrder.bind(this);
     this.traverseInOrder = this.traverseInOrder.bind(this);
@@ -35,25 +38,45 @@ class App extends Component {
     }
   }
 
+  resetPreviewContent(){
+    this.setState({
+        previewContent: ""
+    })
+  }
+
+  resetActiveStatusOfNodes(){
+    this.state.tree.traverseInOrder(this.state.tree.root, function(node) {
+      node.active = false;
+    });
+  }
+
   onChangeInsertValue(event) {
+    this.resetActiveStatusOfNodes();
+    this.resetPreviewContent();
     this.setState({
       insertValue: parseInt(event.target.value)
     });
   }
 
   onChangeDeleteValue(event) {
+    this.resetActiveStatusOfNodes();
+    this.resetPreviewContent();
     this.setState({
       deleteValue: parseInt(event.target.value)
     });
   }
 
   onChangeSearchValue(event) {
+    this.resetActiveStatusOfNodes();
+    this.resetPreviewContent();
     this.setState({
       searchValue: parseInt(event.target.value)
     });
   }
 
   insert() {
+    this.resetActiveStatusOfNodes();
+    this.resetPreviewContent();
     this.state.tree.insert(this.state.insertValue);
     this.setState({
       insertValue: ""
@@ -61,6 +84,8 @@ class App extends Component {
   }
 
   delete() {
+    this.resetActiveStatusOfNodes();
+    this.resetPreviewContent();
     this.state.tree.delete(this.state.deleteValue);
     this.setState({
       deleteValue: ""
@@ -68,47 +93,68 @@ class App extends Component {
   }
 
   search() {
+    this.resetActiveStatusOfNodes();
+    this.resetPreviewContent();
     let searchResult = this.state.tree.find(
       this.state.tree.root,
       this.state.searchValue
     );
+
     if (searchResult) {
-      alert(searchResult.value);
+      searchResult.active = true;
     } else {
-      alert("Not found");
+      this.setState({
+        previewContent: "Not Found!"
+      });
     }
+
+    this.setState({
+      searchValue: ""
+    });
   }
 
   traversePreOrder() {
+    this.resetActiveStatusOfNodes();
     let values = [];
     this.state.tree.traversePreOrder(this.state.tree.root, function(node) {
       values.push(node.value);
     });
-    alert(values.join(" --> "));
+    this.setState({
+      previewContent: values.join(" --> ")
+    });
   }
 
   traversePostOrder() {
+    this.resetActiveStatusOfNodes();
     let values = [];
     this.state.tree.traversePostOrder(this.state.tree.root, function(node) {
       values.push(node.value);
     });
-    alert(values.join(" --> "));
+    this.setState({
+      previewContent: values.join(" --> ")
+    });
   }
 
   traverseInOrder() {
+    this.resetActiveStatusOfNodes();
     let values = [];
     this.state.tree.traverseInOrder(this.state.tree.root, function(node) {
       values.push(node.value);
     });
-    alert(values.join(" --> "));
+    this.setState({
+      previewContent: values.join(" --> ")
+    });
   }
 
   breadthFirstSearch() {
+    this.resetActiveStatusOfNodes();
     let values = [];
     this.state.tree.breadthFirstSearch(this.state.tree.root, function(node) {
       values.push(node.value);
     });
-    alert(values.join(" --> "));
+    this.setState({
+      previewContent: values.join(" --> ")
+    });
   }
 
   render() {
@@ -129,7 +175,7 @@ class App extends Component {
             )}
           </div>
 
-          <div className="basic-actions">
+          <div id="basic-actions">
             <div className="action">
               <input
                 value={this.state.insertValue}
@@ -157,24 +203,28 @@ class App extends Component {
                 REMOVE
               </button>
             </div>
-
-            <div className="action">
-              <input
-                value={this.state.searchValue}
-                onChange={this.onChangeSearchValue}
-                type="number"
-              />
-              <button
-                onClick={this.search}
-                className="btn btn-secondary btn-sm"
-              >
-                FIND
-              </button>
-            </div>
           </div>
         </div>
 
-        <div className="traversal-actions">
+        <div id="traversal-preview">
+          { this.state.previewContent }
+        </div>
+
+        <div id="traversal-actions">
+          <div className="action">
+            <input
+              value={this.state.searchValue}
+              onChange={this.onChangeSearchValue}
+              type="number"
+            />
+            <button
+              onClick={this.search}
+              className="btn btn-secondary btn-sm"
+            >
+              FIND
+            </button>
+          </div>
+
           <div className="action">
             <button
               onClick={this.traversePreOrder}
