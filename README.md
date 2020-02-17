@@ -31,7 +31,7 @@ The tool also supports BFS traversal of the tree
 
 - run `npm run test` to run the test suite
 
-## deploying
+## Deployment
 
 - run `npm run build` to deploy the latest version to githib pages of the repository
 
