@@ -21,6 +21,12 @@ The tool also supports 3 types of DFS traversal
 
 The tool also supports BFS traversal of the tree
 
+## Complexity
+
+- O(log(n)) for all operations even in the worst case.
+
+- For a normal BST, the worst case complexity is O(n)
+
 ## Running tests
 
 - run `npm run test` to run the test suite
