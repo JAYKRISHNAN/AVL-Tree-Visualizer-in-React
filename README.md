@@ -21,6 +21,14 @@ The tool also supports 3 types of DFS traversal
 
 The tool also supports BFS traversal of the tree
 
+## Running tests
+
+- run `npm run test` to run the test suite
+
+## deploying
+
+- run `npm run build` to deploy the latest version to githib pages of the repository
+
 ## To Do
 
 - Add animation visualisations for showing the traversals, insertion, deletion and rotations
