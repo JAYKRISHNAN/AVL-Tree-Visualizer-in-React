@@ -35,7 +35,7 @@ The tool also supports BFS traversal of the tree
 
 ## Deployment
 
-- run `npm run build` to deploy the latest version to githib pages of the repository
+- run `npm run predeploy` and `npm run deploy` to deploy the latest version to Github pages of the repository
 
 ## To Do
 
