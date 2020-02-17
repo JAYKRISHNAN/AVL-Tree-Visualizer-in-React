@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2fd0781a53e8bc1460a8c2832d917e0f",
+    "revision": "412b8cc9ab96c8e56e8ecd07efdea431",
     "url": "/AVL-Tree-Visualizer-in-React/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/AVL-Tree-Visualizer-in-React/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "d67c740473bc5b1d39e3",
-    "url": "/AVL-Tree-Visualizer-in-React/static/css/main.c853c5ed.chunk.css"
+    "revision": "72505b5f222348e49dd7",
+    "url": "/AVL-Tree-Visualizer-in-React/static/css/main.2ced30f2.chunk.css"
   },
   {
     "revision": "56069f81606f40a55c67",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/AVL-Tree-Visualizer-in-React/static/js/2.418e3a07.chunk.js.LICENSE"
   },
   {
-    "revision": "d67c740473bc5b1d39e3",
-    "url": "/AVL-Tree-Visualizer-in-React/static/js/main.2e93a01a.chunk.js"
+    "revision": "72505b5f222348e49dd7",
+    "url": "/AVL-Tree-Visualizer-in-React/static/js/main.ba5f68b0.chunk.js"
   },
   {
     "revision": "7acd608ab2bfdc3a8afc",

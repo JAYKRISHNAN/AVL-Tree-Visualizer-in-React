@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/AVL-Tree-Visualizer-in-React/precache-manifest.7b8a34cb9498296ef8c64f064c7e9efa.js"
+  "/AVL-Tree-Visualizer-in-React/precache-manifest.849928739bef2dbca1bfdffda6b04c31.js"
 );
 
 self.addEventListener('message', (event) => {
